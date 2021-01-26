@@ -1,0 +1,13 @@
+.circle_quantity{
+    position:relative;
+    width:50%;
+    padding-bottom:50%;
+    background:gold;
+    border-radius:50%;
+  }
+  .circle_quantity h3{
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%, -50%);
+    margin:0;
+  }
