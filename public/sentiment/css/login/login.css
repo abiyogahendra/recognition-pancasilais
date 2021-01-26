@@ -1,0 +1,38 @@
+body
+{
+    background-color: #050505;
+}
+.row.navi {
+	margin-top: 10px;
+}
+.row.main {
+	margin-top: -10px;
+}
+.bold, .result {font-weight:bold;}
+.divresult {display:none;}
+.input-group-addon
+{
+    background-color: rgb(21, 40, 56);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+.form-control:focus
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+.form-signup input[type="text"],
+.form-signup input[type="password"] { 
+	border: 1px solid rgb(50, 118, 177); 
+}
+
+.icon-garuda{
+    z-index: 999;
+    margin-bottom: -10px;
+    position: relative;
+}
+
+.content-login{
+    z-index: -1;
+}

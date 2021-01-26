@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Login\LoginController;
+
 use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\CleanTextController;
 
@@ -18,6 +20,10 @@ use App\Http\Controllers\CleanTextController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('login',[LoginController::class, 'LoginIndex'])->name('login-index');
+
+
 Route::get('/data', function()
 {
     $data = Twitter::getUserTimeline(['screen_name' => 'arsiimam', 'count' => 20, 'format' => 'object']);
