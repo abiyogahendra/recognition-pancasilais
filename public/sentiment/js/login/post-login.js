@@ -4,7 +4,7 @@ function PostLogin(){
         data : {
             code_unix   : $("input[name = code_unix]").val(),
             password    : $("input[name = password]").val(),
-            _token      : data_token
+            _token      : dataToken
         },
         type : 'post',
         dataType : 'json',
@@ -13,13 +13,25 @@ function PostLogin(){
                 Swal.fire({
                     icon: 'success',
                     title: 'Login Berhasil',
-                    hmtl : 'Selamat Datang ',
-                    showConfirmButton: false,
-                    timer: 1500
+                    html : 'Selamat Datang',
+                    timerProgressBar: true,
+                    timer: 3000
                   })
             }else{
-                swal
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Login Gagal',
+                    html : 'Mohon Ulangi Kembali',
+                    timerProgressBar: true,
+                    timer: 3000
+                  })
             }
         }
     })
 }
+
+$(document).on('keypress',function(e) {
+    if(e.which == 13) {
+        PostLogin();
+    }
+});

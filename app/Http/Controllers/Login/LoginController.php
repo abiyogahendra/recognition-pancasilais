@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Login;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Validator;
 use Auth;
 use Hash;
@@ -21,17 +22,17 @@ class LoginController extends Controller
     function LoginProcess(Request $request){
         // $data = $request;
 
-        // // $data = $request->all();
-        // dd($data->toArray());
+        // $data = $request->all();
+        // dd($data);
         
         $Admin = User::all();
         
         $validator = Validator::make($request->all(),
                 [
-                    'email'     => 'required | email',
+                    'code_unix' => 'required',
                     'password'  => 'required' 
                 ],[
-                    'email.required'       =>'Email Harus Di isikan',
+                    'code_unix.required'   =>'Code Unix Harus Di isikan',
                     'password.required'    =>'password Diharuskan']
             
         
@@ -39,22 +40,24 @@ class LoginController extends Controller
                 if ($validator->fails()) {
                     return response()->json([
                         'status' => 500,
-                        'message' => 'Email dan password harus diisi'
+                        'message' => 'Code Unix dan Password Harus Diisi'
                     ]);
                 }  
                 
-                $credentials = $request->only('email','password');
+                $credentials = $request->only('code_unix','password');
 
-                $email = $request->email;
+                $code_unix = $request->code_unix;
                 $password = $request->password;
-
+                
                 if (Auth::attempt($credentials)) {
-                    return redirect()->route('dashboard');
+                    return response()->json([
+                        'code' => 200,
+                    ]); 
                  }else{
-                        return response()->json([
-                            'status' => 500,
-                            'message' => 'Email dan password tidak sesuai'
-                        ]); 
+                    return response()->json([
+                        'status' => 500,
+                        'message' => 'Email dan password tidak sesuai'
+                    ]); 
                 }
     }
 }

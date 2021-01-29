@@ -21,7 +21,10 @@ use App\Http\Controllers\CleanTextController;
 //     return view('welcome');
 // });
 
+
+// login
 Route::get('login',[LoginController::class, 'LoginIndex'])->name('login-index');
+Route::post('login_post',[LoginController::class, 'LoginProcess']);
 
 
 Route::get('/data', function()
