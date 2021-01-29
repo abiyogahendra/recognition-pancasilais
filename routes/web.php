@@ -6,6 +6,9 @@ use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\CleanTextController;
 
+use App\Http\Controllers\Page\DashboardController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +24,13 @@ use App\Http\Controllers\CleanTextController;
 //     return view('welcome');
 // });
 
-Route::get('login',[LoginController::class, 'LoginIndex'])->name('login-index');
+Route::get('login',[LoginController::class, 'LoginIndex'])->name('login');
 
+
+Route::get('/',[DashboardController::class, 'IndexDashboard'] );
+Route::group(['middleware' => ['auth']], function(){
+
+});
 
 Route::get('/data', function()
 {
