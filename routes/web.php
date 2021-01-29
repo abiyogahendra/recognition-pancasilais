@@ -6,6 +6,9 @@ use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\CleanTextController;
 
+use App\Http\Controllers\Page\DashboardController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,10 @@ use App\Http\Controllers\CleanTextController;
 Route::get('login',[LoginController::class, 'LoginIndex'])->name('login-index');
 Route::post('login_post',[LoginController::class, 'LoginProcess']);
 
+Route::get('/',[DashboardController::class, 'IndexDashboard'] );
+Route::group(['middleware' => ['auth']], function(){
+
+});
 
 Route::get('/data', function()
 {
