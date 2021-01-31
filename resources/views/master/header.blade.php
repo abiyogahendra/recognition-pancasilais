@@ -20,32 +20,26 @@
                         </a>
                     </li>
                     <li class="nav-item nav-active nav-pengumpulan">
-                        <a class="nav-link" href="javascript:void(0)">
-                            <i class="material-icons">add</i>
+                        <a class="nav-link" onclick="PageUsernameInput()" href="javascript:void(0)">
+                            <i class="material-icons">assignment_ind</i>
                                 <p>Masukkan Username</p>
                         </a>
                     </li>
                     <li class="nav-item nav-active nav-market">
                         <a class="nav-link" href="javascript:void(0)">
-                            <i class="material-icons">add</i>
+                            <i class="material-icons">plagiarism</i>
                                 <p>PreProcessing Data</p>
                         </a>
                     </li>
                     <li class="nav-item nav-active nav-penjualan">
                         <a class="nav-link" href="javascript:void(0)">
-                            <i class="material-icons">add</i>
+                            <i class="material-icons">move_to_inbox</i>
                                 <p>Convert To DataBase</p>
                         </a>
                     </li>
                     <li class="nav-item nav-active nav-penjualan">
                         <a class="nav-link" href="javascript:void(0)">
-                            <i class="material-icons">add</i>
-                                <p>Convert To DataBase</p>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-active nav-penjualan">
-                        <a class="nav-link" href="javascript:void(0)">
-                            <i class="material-icons">add</i>
+                            <i class="material-icons">miscellaneous_services</i>
                                 <p>Recognition Process</p>
                         </a>
                     </li>

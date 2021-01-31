@@ -15,8 +15,24 @@ function PostLogin(){
                     title: 'Login Berhasil',
                     html : 'Selamat Datang',
                     timerProgressBar: true,
-                    timer: 3000
+                    timer: 3000,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                          const content = Swal.getContent()
+                          if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                              b.textContent = Swal.getTimerLeft()
+                            }
+                          }
+                        }, 100)
+                      },
+                      willClose: () => {
+                        clearInterval(timerInterval)
+                      }
                   })
+                  document.location.href = '/';
             }else{
                 Swal.fire({
                     icon: 'warning',
