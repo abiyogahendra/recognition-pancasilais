@@ -7,6 +7,7 @@ use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\CleanTextController;
 
 use App\Http\Controllers\Page\DashboardController;
+use App\Http\Controllers\Page\UsernameController;
 
 
 /*
@@ -26,11 +27,24 @@ use App\Http\Controllers\Page\DashboardController;
 
 
 // login
-Route::get('login',[LoginController::class, 'LoginIndex'])->name('login-index');
+Route::get('login',[LoginController::class, 'LoginIndex'])->name('login');
 Route::post('login_post',[LoginController::class, 'LoginProcess']);
 
-Route::get('/',[DashboardController::class, 'IndexDashboard'] );
+
+
+
 Route::group(['middleware' => ['auth']], function(){
+    Route::get('/',[DashboardController::class, 'IndexDashboard'] );
+
+    // username - input (tweet minings)
+    Route::get('/input-user',[UsernameController::class, 'IndexUsernameInput'] );
+    Route::post('/',[UsernameController::class, 'PostUsernameInput'] );
+    
+    
+
+
+
+
 
 });
 

@@ -9,9 +9,16 @@
     @include('master.modal')
 @endsection()
 
-
 @section('custom_head')
-    @yield('head-modal-content')
+    <link rel="stylesheet" href="{{asset('sentiment/css/user-input/username-fileinput.css')}}">
 @endsection
+
+
 @section('custom_script')
+<!-- page control -->
+<script src="{{asset('/sentiment/js/page-control/page-control.js')}}"></script>
+
+
+<!-- js input username -->
+<script src="{{asset('/sentiment/js/user-input/username-fileinput.js')}}"></script>
 @endsection()
