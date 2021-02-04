@@ -17,9 +17,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css"> 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"> 
     <!-- custom responsive css -->
-    <link rel="stylesheet" href="{{asset('sentiment/css/responsive/yobri_responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('sentiment/css/responsive/yobri-responsive.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/8365b93ec9.css">
     <script src="https://use.fontawesome.com/8365b93ec9.js"></script>
+    <script src="https://kit.fontawesome.com/8d88473a47.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
             @yield('custom_head')
 </head>
 <body class="dark-edition">
@@ -58,6 +60,7 @@
         <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid data_masuk" >
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     @yield('content')
                 </div>
             </div>

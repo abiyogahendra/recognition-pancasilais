@@ -7,8 +7,15 @@ use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\CleanTextController;
 
 use App\Http\Controllers\Page\DashboardController;
-use App\Http\Controllers\Page\UsernameController;
 
+
+// connect to Controllers Minings
+use App\Http\Controllers\Page\Mining\UsernameController;
+use App\Http\Controllers\Page\Mining\HistoryMiningController;
+use App\Http\Controllers\Page\Mining\ExportTweetMiningController;
+
+// connect to Controllers Preprocessing
+use App\Http\Controllers\Page\PreprocessingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,14 +44,24 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/',[DashboardController::class, 'IndexDashboard'] );
 
     // username - input (tweet minings)
-    Route::get('/input-user',[UsernameController::class, 'IndexUsernameInput'] );
-    Route::post('/',[UsernameController::class, 'PostUsernameInput'] );
+    Route::get('/index-history-mining',[HistoryMiningController::class, 'IndexHistoryMining'] );
+    Route::get('/data-history-mining',[HistoryMiningController::class, 'DataHistoryMining'] );
+    Route::get('/input-username',[UsernameController::class, 'IndexUsernameInput'] );
+    Route::post('/post-username',[UsernameController::class, 'PostUsernameInput'] );
+        
+        // export Data Tweet Yang Sudah Diambil
+        Route::get('/index-export-data-mining',[ExportTweetMiningController::class, 'IndexExportMining'] );
+        Route::get('/data-export-mining',[ExportTweetMiningController::class, 'DataExportMining'] );
+        Route::get('/process-export-data-mining/{id}',[ExportTweetMiningController::class, 'ExportDataTweet'] );
+
+
+
+    // Preprocessing - input (pembersihan data kotor)
+    Route::get('/input-preprocessing',[PreprocessingController::class, 'IndexPreprocessingInput'] );
+    Route::post('/post-input-preprocessing',[PreprocessingController::class, 'PostPreprocessingInput'] );
     
+
     
-
-
-
-
 
 });
 

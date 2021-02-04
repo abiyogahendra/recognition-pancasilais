@@ -1,0 +1,131 @@
+.button-username:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0
+}
+
+.card-username {
+  border-radius: 0;
+  border: none
+}
+
+.card1-username {
+  width: 50%;
+  padding: 40px 30px 10px 30px
+}
+
+.card2-username {
+  width: 50%;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #070707, #080467)
+}
+
+#logo-username {
+  width: 70px;
+  height: 60px
+}
+
+.heading-username {
+  margin-bottom: 60px !important
+}
+
+::placeholder {
+  color: #000 !important;
+  opacity: 1
+}
+
+:-ms-input-placeholder {
+  color: #000 !important
+}
+
+::-ms-input-placeholder {
+  color: #000 !important
+}
+
+.form-control-label {
+  font-size: 12px;
+  margin-left: 15px
+}
+
+.msg-info-username {
+  padding-left: 15px;
+  margin-bottom: 30px
+}
+
+.btn-color-username {
+  border-radius: 50px;
+  color: #fff;
+  background-image: linear-gradient(to right, #000000, #2b0989);
+  padding: 15px;
+  cursor: pointer;
+  border: none !important;
+  margin-top: 40px
+}
+
+.btn-color-username:hover {
+  color: #fff;
+  background-image: linear-gradient(to right,  #2b0989,  #000000)
+}
+
+.btn-white-username {
+  border-radius: 50px;
+  color: #634669;
+  background-color: rgb(25, 24, 24);
+  padding: 8px 40px;
+  cursor: pointer;
+  border: 2px solid #60136e !important
+}
+
+.btn-white-username:hover {
+  color: #fff;
+  background-image: linear-gradient(to right, #000000, #0b0153)
+}
+
+.a-username {
+  color: #000
+}
+
+.a-username:hover {
+  color: #000
+}
+
+.bottom-username {
+  width: 100%;
+  margin-top: 50px !important
+}
+
+.sm-text-username {
+  font-size: 15px
+}
+
+@media screen and (max-width: 992px) {
+  .card1-username {
+      width: 100%;
+      padding: 40px 30px 10px 30px
+  }
+
+  .card2-username {
+      width: 100%
+  }
+
+  .right-username {
+      margin-top: 100px !important;
+      margin-bottom: 100px !important
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-username {
+      padding: 10px !important
+  }
+
+  .card2-username {
+      padding: 50px
+  }
+
+  .right-username {
+      margin-top: 50px !important;
+      margin-bottom: 50px !important
+  }
+}
