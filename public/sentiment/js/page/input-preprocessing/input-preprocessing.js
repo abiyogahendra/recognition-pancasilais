@@ -37,12 +37,13 @@ $(document).on('click','#form-preprocessing', function(){
             contentType : false,
             processData : false,
             success : function(response){
+                console.log(response.code)
             if(response.code == 200){
                     swal.fire({
                         position: 'top-end',
                         icon: 'success',
                         title: 'input Berhasil',
-                        html : 'Data Tweet ' + respon.file_name + "  Telah berhasil Terinput",
+                        html : 'Data Tweet ' + response.file_name + "  Telah berhasil Terinput",
                         showConfirmButton: false,
                         timer: 2000
                     }) 

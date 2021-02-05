@@ -68,7 +68,7 @@
                         <div class="collapse" id="preprocessing">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="HistoryPreprocessing()" class="nav-link">
+                                    <a href="javascript:void(0)" onclick="IndexHistoryPreprocessing()" class="nav-link">
                                         <span>
                                             <i class="material-icons">history</i>
                                         </span>
@@ -88,7 +88,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="()" class="nav-link">
+                                    <a href="javascript:void(0)" onclick="IndexProcessPreprocessing()" class="nav-link">
                                         <span>
                                             <i class="material-icons">archive</i>
                                         </span>
@@ -115,8 +115,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        
-                        
                         </div>
                     </li>
                     <li class="nav-item nav-active nav-penjualan">
@@ -125,7 +123,7 @@
                                 <p>Recognition Process</p>
                         </a>
                     </li>
-                <!-- your sidebar here -->
+                    <!-- your sidebar here -->
                 </ul>
             </div>
         </div>

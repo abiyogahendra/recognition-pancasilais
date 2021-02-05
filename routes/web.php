@@ -15,7 +15,9 @@ use App\Http\Controllers\Page\Mining\HistoryMiningController;
 use App\Http\Controllers\Page\Mining\ExportTweetMiningController;
 
 // connect to Controllers Preprocessing
-use App\Http\Controllers\Page\PreprocessingController;
+use App\Http\Controllers\Page\Preprocessing\HistoryPreprocessingController;
+use App\Http\Controllers\Page\Preprocessing\InputDataPreprocessingController;
+use App\Http\Controllers\Page\Preprocessing\ProcessPreprocessingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +59,13 @@ Route::group(['middleware' => ['auth']], function(){
 
 
     // Preprocessing - input (pembersihan data kotor)
-    Route::get('/input-preprocessing',[PreprocessingController::class, 'IndexPreprocessingInput'] );
-    Route::post('/post-input-preprocessing',[PreprocessingController::class, 'PostPreprocessingInput'] );
+    Route::get('/index-history-preprocessing',[HistoryPreprocessingController::class, 'IndexHistoryPreprocessing'] );
+    Route::get('/data-history-preprocessing',[HistoryPreprocessingController::class, 'DataHistoryPreprocessing'] );
+    Route::get('/input-preprocessing',[InputDataPreprocessingController::class, 'IndexPreprocessingInput'] );
+    Route::post('/post-input-preprocessing',[InputDataPreprocessingController::class, 'PostPreprocessingInput'] );
+    Route::get('/index-process-preprocessing',[ProcessPreprocessingController::class, 'IndexProcessPreprocessing'] );
+    Route::get('/data-process-preprocessing',[ProcessPreprocessingController::class, 'DataProcessPreprocessing'] );
+    Route::post('/process-preprocesing',[ProcessPreprocessingController::class, 'ProcessPreprocessing'] );
     
 
     

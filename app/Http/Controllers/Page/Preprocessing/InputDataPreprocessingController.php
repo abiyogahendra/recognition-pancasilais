@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Page;
+namespace App\Http\Controllers\Page\Preprocessing;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use DB;
 use split;
 use Carbon\Carbon;
 
-class PreprocessingController extends Controller{
+class InputDataPreprocessingController extends Controller{
     //
     public function __construct(){
         $this->middleware(['web']);
@@ -26,20 +26,30 @@ class PreprocessingController extends Controller{
         
         $name = $data_file->getClientOriginalName();
 
-        $username = explode('.', $name, 2);
+        $data_file->move('preprocessing/',$name);
 
+        $username = explode('.', $name, 2);
         // dd($username);
         $update_step = DB::table('user')
             ->where('username', 'like', $username[0])
             ->update([
                 'step' => 1
             ]);
+        $get_id_user = DB::table('user')
+            ->where('username', 'like', $username[0])
+            ->select(['id_user'])
+            ->get();
 
         $upload_data = DB::table('preprocessing')
             ->insert([
-                
+                'id_user' => $get_id_user[0]->id_user,
+                'status' => 0,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
-        // dd($name);
-        
+        return response()->json([
+            'code' => 200,
+            'file_name' => $name
+        ]);
     }
 }

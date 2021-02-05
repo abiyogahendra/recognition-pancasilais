@@ -51,9 +51,8 @@ class TwitterController extends Controller
         // $uji = DB::table('dt_tw')
         //     ->delete();
 
-       $out = 0;
-       $data = exec('py preprocessing\preprocessing.py preprocessing\data_arsi 2>&1');
-
+       $out = 'preprocessing/arsiimam';
+       $data = exec('py preprocessing\preprocessing.py '. $out.' 2>&1');
 
        echo $data;
        
