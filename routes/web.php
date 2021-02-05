@@ -61,15 +61,14 @@ Route::group(['middleware' => ['auth']], function(){
     // Preprocessing - input (pembersihan data kotor)
     Route::get('/index-history-preprocessing',[HistoryPreprocessingController::class, 'IndexHistoryPreprocessing'] );
     Route::get('/data-history-preprocessing',[HistoryPreprocessingController::class, 'DataHistoryPreprocessing'] );
+    Route::post('/confirmation-download-file-preprocessing',[HistoryPreprocessingController::class, 'ConfirmationDownloadFilePreprocession'] );
+    Route::get('/download-file-preprocessing/{id}',[HistoryPreprocessingController::class, 'DownloadFilePreprocession'] );
     Route::get('/input-preprocessing',[InputDataPreprocessingController::class, 'IndexPreprocessingInput'] );
     Route::post('/post-input-preprocessing',[InputDataPreprocessingController::class, 'PostPreprocessingInput'] );
     Route::get('/index-process-preprocessing',[ProcessPreprocessingController::class, 'IndexProcessPreprocessing'] );
     Route::get('/data-process-preprocessing',[ProcessPreprocessingController::class, 'DataProcessPreprocessing'] );
     Route::post('/process-preprocesing',[ProcessPreprocessingController::class, 'ProcessPreprocessing'] );
     
-
-    
-
 });
 
 Route::get('/data', function()

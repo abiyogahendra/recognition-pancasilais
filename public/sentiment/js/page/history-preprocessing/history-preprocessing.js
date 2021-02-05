@@ -1,5 +1,35 @@
-function IndexDetailPreprocessing(id){
+function DownloadFilePreprocessing(id){
+    $.ajax({
+        url : '/confirmation-download-file-preprocessing',
+        data : {
+            id_preprocessing : id,
+            _token : dataToken
+        },
+        dataType : 'json',
+        type : 'post',
+        success : function(respon){
+            if(respon.code == 500){
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Download Terjadi Masalah Terjadi Kesalahan',
+                    html : "Harap Menghubungi Pengembang",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
 
+            }else{
+                window.location.href = "/download-file-preprocessing/"+ respon.file_name;
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Download Berhasil',
+                    showConfirmButton: false,
+                    timer: 1500
+                }) 
+            }
+        }
+    })
 }
 
 
@@ -56,7 +86,7 @@ function IndexHistoryPreprocessing(){
                       {"targets": 5,
                         "data": 0,
                         "render": function ( data, type, row, meta ) {
-                          return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DetailProgressRitzuka('+data+')"><i class="fas fa-download"></i> Download</a> </div></div>';
+                          return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DownloadFilePreprocessing('+data+')"><i class="fas fa-download"></i> Download</a> </div></div>';
                         }
                       },
                       
