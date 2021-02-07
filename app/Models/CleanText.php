@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CleanText extends Model
 {
     // use HasFactory;
-    protected $table = 'clean_text';
+    protected $table = 'clean_tweet';
     protected $primaryKey = 'id_clean';
 
     /**
@@ -19,7 +19,7 @@ class CleanText extends Model
 
      protected $fillable  = [
         'id_user',
-        'tweet_cleaning',
+        'clean_tweet',
     ];
 
     /**

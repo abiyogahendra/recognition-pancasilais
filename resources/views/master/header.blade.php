@@ -100,17 +100,40 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-active nav-penjualan" >
-                        <a class="nav-link" data-toggle="collapse" href="#mining-data">
+                    <li class="nav-item nav-active nav-import-database" >
+                        <a class="nav-link" data-toggle="collapse" href="#import-to-database">
                             <i class="material-icons">move_to_inbox</i>
                                 <p>Convert To DataBase</p>
                         </a>
-                        <div class="collapse" id="mining-data">
+                        <div class="collapse" id="import-to-database">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a href="javascript:void(0)" class="nav-link">
+                                    <a href="javascript:void(0)" onclick="HistoryImprotDatabase()" class="nav-link">
                                         <span>
-                                            Input username
+                                            <i class="material-icons">history</i>
+                                        </span>
+                                        <span>
+                                            History Preprocessing
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" onclick="IndexInputImportToDatabase()" class="nav-link">
+                                        <span>
+                                            <i class="material-icons">history</i>
+                                        </span>
+                                        <span>
+                                            Upload File Excel
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" onclick="IndexPrepareData()" class="nav-link">
+                                        <span>
+                                            <i class="material-icons">history</i>
+                                        </span>
+                                        <span>
+                                            Prepare Data To Ready Process
                                         </span>
                                     </a>
                                 </li>

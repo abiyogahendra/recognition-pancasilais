@@ -42,4 +42,12 @@
 <script src="{{asset('/sentiment/js/page/input-preprocessing/fileinput.js')}}"></script>
 <script src="{{asset('/sentiment/js/page/input-preprocessing/input-preprocessing.js')}}"></script>
 <script src="{{asset('/sentiment/js/page/process-preprocessing/process-preprocessing.js')}}"></script>
+
+<!-- js import to database -->
+<script src="{{asset('/sentiment/js/page/history-import-database/history-import-database.js')}}"></script>
+<script src="{{asset('/sentiment/js/page/input-import-database/input-import-database.js')}}"></script>
+<script src="{{asset('/sentiment/js/page/prepare-data-to-ready-process/prepare-data-to-ready-process.js')}}"></script>
+
+
+
 @endsection()

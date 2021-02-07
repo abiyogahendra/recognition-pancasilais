@@ -19,6 +19,12 @@ use App\Http\Controllers\Page\Preprocessing\HistoryPreprocessingController;
 use App\Http\Controllers\Page\Preprocessing\InputDataPreprocessingController;
 use App\Http\Controllers\Page\Preprocessing\ProcessPreprocessingController;
 
+// connect to Controller ImportToDatabase
+use App\Http\Controllers\Page\ImportDB\HistoryImportToDatabaseController;
+use App\Http\Controllers\Page\ImportDB\ImportToDatabaseController;
+use App\Http\Controllers\Page\ImportDB\PrepareDataToReadyProcessController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,6 +74,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/index-process-preprocessing',[ProcessPreprocessingController::class, 'IndexProcessPreprocessing'] );
     Route::get('/data-process-preprocessing',[ProcessPreprocessingController::class, 'DataProcessPreprocessing'] );
     Route::post('/process-preprocesing',[ProcessPreprocessingController::class, 'ProcessPreprocessing'] );
+    
+    // Import data to Database 
+    Route::get('/index-history-import-database',[HistoryImportToDatabaseController::class, 'IndexHistoryImportDB'] );
+    Route::get('/data-history-import-database',[HistoryImportToDatabaseController::class, 'dataHistoryImportDB'] );
+    Route::get('/input-import-to-database',[ImportToDatabaseController::class, 'IndexInputImportDatabase'] );
+    Route::post('/data-import-to-database',[ImportToDatabaseController::class, 'DataInputImportDatabase'] );
+    Route::get('/index-data-to-ready-process',[PrepareDataToReadyProcessController::class, 'IndexDataReady'] );
+    Route::get('/data-to-ready-process',[PrepareDataToReadyProcessController::class, 'ListDataToReadyProcess'] );
+    Route::post('/process-data-to-ready-data',[PrepareDataToReadyProcessController::class, 'ProcessDataToReadyProcess'] );
     
 });
 

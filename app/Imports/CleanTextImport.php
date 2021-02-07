@@ -3,20 +3,25 @@
 namespace App\Imports;
 
 use App\Models\CleanText;
-use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class CleanTextImport implements ToModel
+
+class CleanTextImport implements ToModel, WithHeadingRow
 {
     /**
-    * @param Collection $collection
+    * @param array $row
+    *
+    * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
     {
         //
+        // dd($row);
         return new CleanText([
-            'id_user'       => $row[2],
-            'tweet_clean'   => $row[6]
+            'id_user'       => $row['id_user'],
+            'clean_tweet'   => $row['tweet_tokens_wsw']
+            
         ]);
 
     }
