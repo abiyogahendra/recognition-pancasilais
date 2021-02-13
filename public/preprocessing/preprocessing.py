@@ -7,6 +7,8 @@ import re #regex library
 from nltk.tokenize import word_tokenize 
 from nltk.probability import FreqDist
 from nltk.corpus import stopwords
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+# import swifter
 
 Username = sys.argv[1]
 TWEET_DATA = pd.read_csv(Username+'.csv')
@@ -109,6 +111,41 @@ def stopwords_removal(words):
 TWEET_DATA['tweet_tokens_WSW'] = TWEET_DATA['tweet_tokens'].apply(stopwords_removal) 
 
 print(TWEET_DATA['tweet_tokens_WSW'].head())
+
+
+
+
+factory = StemmerFactory()
+stemmer = factory.create_stemmer()
+
+# stemmed
+def stemmed_wrapper(term):
+    return stemmer.stem(term)
+
+term_dict = {}
+
+for document in TWEET_DATA['tweet_tokens_WSW']:
+    for term in document:
+        if term not in term_dict:
+            term_dict[term] = ' '
+            
+print(len(term_dict))
+print("------------------------")
+
+for term in term_dict:
+    term_dict[term] = stemmed_wrapper(term)
+    print(term,":" ,term_dict[term])
+    
+print(term_dict)
+print("------------------------")
+
+
+# apply stemmed term to dataframe
+def get_stemmed_term(document):
+    return [term_dict[term] for term in document]
+
+TWEET_DATA['tweet_tokens_stemmed'] = TWEET_DATA['tweet_tokens_WSW'].apply(get_stemmed_term)
+print(TWEET_DATA['tweet_tokens_stemmed'])
 
 TWEET_DATA.to_excel(Username+".xlsx")
 
