@@ -19,52 +19,6 @@ class PrepareDataToReadyProcessController extends Controller{
         $this->middleware(['web']);
     }
 
-    function IndexDataReady(){
-        return view('page.prepare-data-to-ready-process');
-
-    }
-
-    function ListDataToReadyProcess(){
-        $d = DB::table('clean_tweet')
-            ->join('user', 'clean_tweet.id_user', '=', 'user.id_user')
-            ->select([
-                'user.id_user',
-                'user.username',
-                'clean_tweet.updated_at',
-                DB::Raw('count(clean_tweet) as j_clean')
-            ])
-            ->groupBy([
-                'user.id_user',
-                'user.username',
-                'clean_tweet.updated_at',
-            ])
-            ->get();
-
-        $h = 0;
-        $date = [];
-
-        foreach($d as $q){
-            $date[$h] = date('d-M-H:i', strtotime( $q->updated_at));
-            $h++;
-        }
-        
-        $i = 0;
-        $data = [];
-
-        foreach($d as $s){
-            $data[$i] = [
-                $s->id_user,
-                $s->username,
-                $s->j_clean,
-                $date[$i],
-            ];
-            $i++;
-        }
-
-        return response($data);
-        
-    }
-
     function ProcessDataToReadyProcess(Request $request){
 
         $id = $request->id_username;
@@ -88,7 +42,11 @@ class PrepareDataToReadyProcessController extends Controller{
                     'clean_tweet'
                 ])
                 ->get();
-
+            $update_user = DB::table('user')
+                ->where('id_user', '=', $request->id_username)
+                ->update([
+                    'clean_step' => 2
+                ]);
             // dd($data_db);
             $i = 0;
             $tweet = [];
@@ -103,7 +61,6 @@ class PrepareDataToReadyProcessController extends Controller{
                 }
                 $tweet[$i] = explode("', '", $tweet[$i]);
                 $final = json_encode($tweet[$i]);
-                //  dd($final);
 
                 $insert_ready_data = DB::table('data_ready')
                     ->insert([

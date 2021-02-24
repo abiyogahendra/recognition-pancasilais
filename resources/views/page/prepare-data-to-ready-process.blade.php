@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body ">
                         <div class="table">
-                            <table class="table table-bordered fblack " id="table-prepare-data-to-ready-data">
+                            <table class="table table-bordered fblack" id="table-prepare-data-to-ready-data">
                                 <thead>
                                     <tr class="center">
                                         <th>ID Username</th>

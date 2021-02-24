@@ -35,18 +35,14 @@
 <!-- js Username Input -->
 <script src="{{asset('/sentiment/js/page/input_username/username-fileinput.js')}}"></script>
 <script src="{{asset('/sentiment/js/page/history-mining/history-mining.js')}}"></script>
-<script src="{{asset('/sentiment/js/page/export-mining/export-mining.js')}}"></script>
 
 <!-- js input preprocessing -->
 <script src="{{asset('/sentiment/js/page/history-preprocessing/history-preprocessing.js')}}"></script>
 <script src="{{asset('/sentiment/js/page/input-preprocessing/fileinput.js')}}"></script>
 <script src="{{asset('/sentiment/js/page/input-preprocessing/input-preprocessing.js')}}"></script>
-<script src="{{asset('/sentiment/js/page/process-preprocessing/process-preprocessing.js')}}"></script>
 
 <!-- js import to database -->
 <script src="{{asset('/sentiment/js/page/history-import-database/history-import-database.js')}}"></script>
-<script src="{{asset('/sentiment/js/page/input-import-database/input-import-database.js')}}"></script>
-<script src="{{asset('/sentiment/js/page/prepare-data-to-ready-process/prepare-data-to-ready-process.js')}}"></script>
 
 
 

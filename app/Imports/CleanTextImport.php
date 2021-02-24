@@ -20,8 +20,7 @@ class CleanTextImport implements ToModel, WithHeadingRow
         // dd($row);
         return new CleanText([
             'id_user'       => $row['id_user'],
-            'clean_tweet'   => $row['tweet_tokens_wsw']
-            
+            'clean_tweet'   => $row['tweet_tokens_stemmed']
         ]);
 
     }

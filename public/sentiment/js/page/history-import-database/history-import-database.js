@@ -1,3 +1,86 @@
+function CleanDataTweet(id){
+    $.LoadingOverlay("show", {
+        image       : "",
+        fontawesome : "fa fa-cog fa-spin",
+    });
+    $.ajax({
+        url : '/process-data-to-ready-data',
+        data : {
+            id_username : id,
+            _token : dataToken,
+        },
+        type : 'post',
+        dataType : 'json',
+        success : function(respon){
+            if(respon.code == 200){
+                $.LoadingOverlay("hide");
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'input Berhasil',
+                    html : respon.data + " Data Siap Diproses",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                $('.data-content').remove();
+                HistoryImprotDatabase();
+            }
+            else if (respon.code == 500){
+                $.LoadingOverlay("hide");
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Terjadi Kesalahan Saat Pembersihan',
+                    html : "Harap Menghubungi Pengembang",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        }
+    })
+}
+
+function ImportIntoDatabase(id){
+    $.LoadingOverlay("show", {
+        image       : "",
+        fontawesome : "fa fa-cog fa-spin",
+    });
+    $.ajax({
+        url : '/data-import-to-database',
+        data : {
+            _token : dataToken,
+            id_user : id
+        },
+        dataType : 'json',
+        type : 'post',
+        success : function(respon){
+            if(respon.code == 200){
+                $.LoadingOverlay("hide");
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Import Data Berhasil',
+                    html : respon.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                $('.data-content').remove();
+                HistoryImprotDatabase();
+            }else{
+                $.LoadingOverlay("hide");
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Import Terjadi Kesalahan',
+                    html : "Harap Menghubungi Pengembang",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        }
+    })
+}
+
 function HistoryImprotDatabase(){
     if ($(".data-content").length){
         $(".data-content").remove();
@@ -52,7 +135,7 @@ function HistoryImprotDatabase(){
                       {"targets": 5,
                         "data": 0,
                         "render": function ( data, type, row, meta ) {
-                          return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DetailProgressRitzuka('+data+')"><i class="fa fa-eye"></i></a> </div></div>';
+                          return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DetailProgressRitzuka('+data+')"><i class="fa fa-eye"></i></a> | <a href="javascript:void(0)" style="color:black" onclick="ImportIntoDatabase('+data+')"><i class="fas fa-server"></i></a> | <a href="javascript:void(0)" style="color:black" onclick="CleanDataTweet('+data+')"><i class="fas fa-hand-sparkles"></i></a> </div></div>';
                         }
                       },
                       

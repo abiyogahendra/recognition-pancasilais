@@ -32,6 +32,47 @@ function DownloadFilePreprocessing(id){
     })
 }
 
+function ProcessPreprocessing(id){
+    $.LoadingOverlay("show", {
+        image       : "",
+        fontawesome : "fa fa-cog fa-spin",
+    });
+    $.ajax({
+        url : 'process-preprocesing',
+        data : {
+            id_preprocessing : id,
+            _token :dataToken,
+        },
+        type : 'post',
+        dataType : 'json',
+        success : function(response){
+            if(response.code == 200){
+                $.LoadingOverlay("hide")
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'input Berhasil',
+                    html : 'Data Tweet ' + response.file_name + "  Telah berhasil diproses",
+                    showConfirmButton: false,
+                    timer: 2000
+                }) 
+                    $('.data-content').remove();
+                    IndexHistoryPreprocessing();
+            }else{
+                $.LoadingOverlay("hide")
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Export Terjadi Kesalahan',
+                    html : "Harap Menghubungi Pengembang",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        }
+    })
+}
+
 
 function IndexHistoryPreprocessing(){
     if ($(".data-content").length){
@@ -86,7 +127,7 @@ function IndexHistoryPreprocessing(){
                       {"targets": 5,
                         "data": 0,
                         "render": function ( data, type, row, meta ) {
-                          return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DownloadFilePreprocessing('+data+')"><i class="fas fa-download"></i> Download</a> </div></div>';
+                          return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DownloadFilePreprocessing('+data+')"><i class="fas fa-download"></i></a> | <a href="javascript:void(0)" style="color:black" onclick="ProcessPreprocessing('+data+')"><i class="fas fa-cogs"></i></a></div></div>';
                         }
                       },
                       

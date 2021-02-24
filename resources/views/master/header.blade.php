@@ -47,16 +47,6 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="PageExportDataMining()" class="nav-link">
-                                        <span>
-                                            <i class="material-icons">save_alt</i>
-                                        </span>
-                                        <span>
-                                            Export Data Mining
-                                        </span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </li>
@@ -87,16 +77,6 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="IndexProcessPreprocessing()" class="nav-link">
-                                        <span>
-                                            <i class="material-icons">archive</i>
-                                        </span>
-                                        <span>
-                                            Process File Preprocessing
-                                        </span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </li>
@@ -114,26 +94,6 @@
                                         </span>
                                         <span>
                                             History Preprocessing
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="IndexInputImportToDatabase()" class="nav-link">
-                                        <span>
-                                            <i class="material-icons">history</i>
-                                        </span>
-                                        <span>
-                                            Upload File Excel
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="IndexPrepareData()" class="nav-link">
-                                        <span>
-                                            <i class="material-icons">history</i>
-                                        </span>
-                                        <span>
-                                            Prepare Data To Ready Process
                                         </span>
                                     </a>
                                 </li>

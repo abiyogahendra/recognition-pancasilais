@@ -1,4 +1,4 @@
-<div class="data-content">
+<div class="data-content" id="history-mining">
     <div class="row">
         <div class="col">
             <div class="card">

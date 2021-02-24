@@ -19,8 +19,10 @@ function PagePreProcessing(){
 
 // function PostInputPreprocessing(){
 $(document).on('click','#form-preprocessing', function(){
-    
-    console.log(dataToken);
+        $.LoadingOverlay("show", {
+            image       : "",
+            fontawesome : "fa fa-cog fa-spin",
+        });
     // console.log($(this).parents('form')[0]);
         var formData = new FormData($(this).parents('form')[0]);
         console.log(formData);
@@ -39,23 +41,25 @@ $(document).on('click','#form-preprocessing', function(){
             success : function(response){
                 console.log(response.code)
             if(response.code == 200){
-                    swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'input Berhasil',
-                        html : 'Data Tweet ' + response.file_name + "  Telah berhasil Terinput",
-                        showConfirmButton: false,
-                        timer: 2000
-                    }) 
+                $.LoadingOverlay("hide");
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'input Berhasil',
+                    html : 'Data Tweet ' + response.file_name + "  Telah berhasil Terinput",
+                    showConfirmButton: false,
+                    timer: 2000
+                }) 
             }else{
-                    swal.fire({
-                        position: 'top-end',
-                        icon: 'warning',
-                        title: 'Export Terjadi Kesalahan',
-                        html : "Harap Menghubungi Pengembang",
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
+                $.LoadingOverlay("hide");
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Export Terjadi Kesalahan',
+                    html : "Harap Menghubungi Pengembang",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
             }
         })

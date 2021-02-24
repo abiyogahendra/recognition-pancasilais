@@ -15,7 +15,7 @@
                                             <th>ID Username</th>
                                             <th>Username</th>
                                             <th>Jumlah Tweet</th>
-                                            <th>Step</th>
+                                            <th>Keterangan</th>
                                             <th>Update Time</th>
                                             <th>Option</th>
                                         </tr>

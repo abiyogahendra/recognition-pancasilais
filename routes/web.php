@@ -55,7 +55,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/index-history-mining',[HistoryMiningController::class, 'IndexHistoryMining'] );
     Route::get('/data-history-mining',[HistoryMiningController::class, 'DataHistoryMining'] );
     Route::get('/input-username',[UsernameController::class, 'IndexUsernameInput'] );
+    Route::post('/check-username',[UsernameController::class, 'CheckUsername']);
     Route::post('/post-username',[UsernameController::class, 'PostUsernameInput'] );
+    Route::post('/delete-user-mining',[UsernameController::class, 'DeletedUsernameTweet'] );
         
         // export Data Tweet Yang Sudah Diambil
         Route::get('/index-export-data-mining',[ExportTweetMiningController::class, 'IndexExportMining'] );

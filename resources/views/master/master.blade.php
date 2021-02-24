@@ -58,9 +58,10 @@
                 </div>
             </nav>
         <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid data_masuk" >
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="content"> 
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="container-fluid data_masuk" id="data-reload">
+                   
                     @yield('content')
                 </div>
             </div>
@@ -76,6 +77,7 @@
     <script src="{{asset('/investor/js/core/bootstrap-material-design.min.js')}}"></script>
     <script src="{{asset('/investor/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
     <!-- Chartist JS -->
     <script src="{{asset('/investor/js/plugins/chartist.min.js')}}"></script>
     <!--  Notifications Plugin    -->
