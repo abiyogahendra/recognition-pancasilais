@@ -4,34 +4,59 @@ function CleanDataTweet(id){
         fontawesome : "fa fa-cog fa-spin",
     });
     $.ajax({
-        url : '/process-data-to-ready-data',
+        url : '/check-data-ready',
         data : {
             id_username : id,
             _token : dataToken,
         },
         type : 'post',
         dataType : 'json',
-        success : function(respon){
-            if(respon.code == 200){
-                $.LoadingOverlay("hide");
-                swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'input Berhasil',
-                    html : respon.data + " Data Siap Diproses",
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-                $('.data-content').remove();
-                HistoryImprotDatabase();
-            }
-            else if (respon.code == 500){
+        success : function(response){
+            if(response.code == 200){
+                $.ajax({
+                    url : '/process-data-to-ready-data',
+                    data : {
+                        id_username : id,
+                        _token : dataToken,
+                    },
+                    type : 'post',
+                    dataType : 'json',
+                    success : function(respon){
+                        if(respon.code == 200){
+                            $.LoadingOverlay("hide");
+                            var pageURL = $(location).attr("href");
+                            // $.playSound(pageURL + 'sound/kawaii_.mp3'); 
+                            swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'input Berhasil',
+                                html : respon.data + " Data Siap Diproses",
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            $('.data-content').remove();
+                            HistoryImprotDatabase();
+                        }
+                        else if (respon.code == 500){
+                            $.LoadingOverlay("hide");
+                            swal.fire({
+                                position: 'top-end',
+                                icon: 'warning',
+                                title: 'Terjadi Kesalahan Saat Pembersihan',
+                                html : "Harap Menghubungi Pengembang",
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    }
+                })
+            }else{
                 $.LoadingOverlay("hide");
                 swal.fire({
                     position: 'top-end',
                     icon: 'warning',
-                    title: 'Terjadi Kesalahan Saat Pembersihan',
-                    html : "Harap Menghubungi Pengembang",
+                    title: 'Belum Boleh',
+                    html : "Perlu Import Terlebih Dahulu",
                     showConfirmButton: false,
                     timer: 2000
                 })
@@ -41,44 +66,70 @@ function CleanDataTweet(id){
 }
 
 function ImportIntoDatabase(id){
-    $.LoadingOverlay("show", {
+  $.LoadingOverlay("show", {
         image       : "",
         fontawesome : "fa fa-cog fa-spin",
     });
     $.ajax({
-        url : '/data-import-to-database',
-        data : {
-            _token : dataToken,
-            id_user : id
-        },
-        dataType : 'json',
-        type : 'post',
-        success : function(respon){
-            if(respon.code == 200){
-                $.LoadingOverlay("hide");
-                swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Import Data Berhasil',
-                    html : respon.message,
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-                $('.data-content').remove();
-                HistoryImprotDatabase();
-            }else{
-                $.LoadingOverlay("hide");
+      url : '/check-data-import',
+      data : {
+          _token : dataToken,
+          id_user : id
+      },
+      dataType : 'json',
+      type : 'post',
+      success : function(response){
+          console.log(response);
+        if(response.code == 200){
+            $.ajax({
+                url : '/data-import-to-database',
+                data : {
+                    _token : dataToken,
+                    id_user : id
+                },
+                dataType : 'json',
+                type : 'post',
+                success : function(respon){
+                    if(respon.code == 200){
+                        $.LoadingOverlay("hide");
+                        var pageURL = $(location).attr("href");
+                        // $.playSound(pageURL + 'sound/kawaii_.mp3') 
+                        swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Import Data Berhasil',
+                            html : respon.message,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        $('.data-content').remove();
+                        HistoryImprotDatabase();
+                    }else{
+                        $.LoadingOverlay("hide");
+                        swal.fire({
+                            position: 'top-end',
+                            icon: 'warning',
+                            title: 'Import Terjadi Kesalahan',
+                            html : "Harap Menghubungi Pengembang",
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                }
+            })
+        }else{
+            $.LoadingOverlay("hide");
                 swal.fire({
                     position: 'top-end',
                     icon: 'warning',
-                    title: 'Import Terjadi Kesalahan',
-                    html : "Harap Menghubungi Pengembang",
+                    title: 'Data Sudah Terimport',
+                    html : "Jangan Mengulangi Yang Tidak Perlu",
                     showConfirmButton: false,
                     timer: 2000
                 })
-            }
         }
-    })
+      }
+    })  
 }
 
 function HistoryImprotDatabase(){
@@ -93,7 +144,7 @@ function HistoryImprotDatabase(){
           success : function(respon){
               $('.data_masuk').append(respon);
               $('.nav-active').removeClass("active");
-              $('.nav-import-database').addClass("active");
+              $('.nav-preprocessing').addClass("active");
   
               $('#table-history-import-database').DataTable({
                   ajax : {

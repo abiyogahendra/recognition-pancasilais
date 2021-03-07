@@ -22,10 +22,10 @@ class HistoryImportToDatabaseController extends Controller{
     function IndexHistoryImportDB(){
         return view('page.history-import-database');
     }
-    
+
     function dataHistoryImportDB (){
        $clean_tweet = DB::table('user')
-       ->where('step', '>', 0 )
+       ->where('step', '<', 3 )
         ->join('dt_tw', 'user.id_user', '=', 'dt_tw.id_user')
         ->select([
             'user.id_user',
@@ -74,6 +74,7 @@ class HistoryImportToDatabaseController extends Controller{
 
         return response($data);
     }
+
 
     
 }

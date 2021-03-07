@@ -20,23 +20,14 @@
                                 <p>History Recognition</p>
                         </a>
                     </li>
-                    <li class="nav-item nav-active nav-mining">
-                        <a class="nav-link" data-toggle="collapse" href="#tweet-mining">
-                            <i class="material-icons">assignment_ind</i>
-                                <p>Minning Data</p>
+                    
+                    <li class="nav-item nav-active nav-preprocessing">
+                        <a class="nav-link" data-toggle="collapse" href="#preprocessing" >
+                            <i class="material-icons">plagiarism</i>
+                                <p>PreProcessing Data</p>
                         </a>
-                        <div class="collapse" id="tweet-mining">
+                        <div class="collapse" id="preprocessing">
                             <ul class="nav">
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="HistoryMining()" class="nav-link">
-                                        <span>
-                                            <i class="material-icons">history</i>
-                                        </span>
-                                        <span>
-                                            History Mining
-                                        </span>
-                                    </a>
-                                </li>
                                 <li class="nav-item">
                                     <a href="javascript:void(0)" onclick="PageUsername()" class="nav-link">
                                         <span>
@@ -47,46 +38,26 @@
                                         </span>
                                     </a>
                                 </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-active nav-preprocessing">
-                        <a class="nav-link" data-toggle="collapse" href="#preprocessing" >
-                            <i class="material-icons">plagiarism</i>
-                                <p>PreProcessing Data</p>
-                        </a>
-                        <div class="collapse" id="preprocessing">
-                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" onclick="HistoryMining()" class="nav-link">
+                                        <span>
+                                            <i class="material-icons">history</i>
+                                        </span>
+                                        <span>
+                                            Proses Mining
+                                        </span>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="javascript:void(0)" onclick="IndexHistoryPreprocessing()" class="nav-link">
                                         <span>
                                             <i class="material-icons">history</i>
                                         </span>
                                         <span>
-                                            History Preprocessing
+                                            Preprocessing
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" onclick="PagePreProcessing()" class="nav-link">
-                                        <span>
-                                            <i class="material-icons">add_circle_outline</i>
-                                        </span>
-                                        <span>
-                                            Input File Preprocessing
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-active nav-import-database" >
-                        <a class="nav-link" data-toggle="collapse" href="#import-to-database">
-                            <i class="material-icons">move_to_inbox</i>
-                                <p>Convert To DataBase</p>
-                        </a>
-                        <div class="collapse" id="import-to-database">
-                            <ul class="nav">
                                 <li class="nav-item">
                                     <a href="javascript:void(0)" onclick="HistoryImprotDatabase()" class="nav-link">
                                         <span>
@@ -97,14 +68,49 @@
                                         </span>
                                     </a>
                                 </li>
+
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-active nav-penjualan">
-                        <a class="nav-link" href="javascript:void(0)">
+                    <li class="nav-item nav-active nav-kamus">
+                        <a class="nav-link" data-toggle="collapse" href="#kamus">
+                            <i class="material-icons">assignment</i>
+                                <p>Kamus</p>
+                        </a>
+                        <div class="collapse" id="kamus">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" onclick="PageInputKamus()" class="nav-link">
+                                        <span>
+                                            <i class="material-icons">add_circle_outline</i>
+                                        </span>
+                                        <span>
+                                            Input Kamus
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-active nav-pelabelan">
+                        <a class="nav-link" data-toggle="collapse" href="#pelabelan">
                             <i class="material-icons">miscellaneous_services</i>
                                 <p>Recognition Process</p>
                         </a>
+                        <div class="collapse" id="pelabelan">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" onclick="HistoryPelabelan()" class="nav-link">
+                                        <span>
+                                            <i class="material-icons">add_circle_outline</i>
+                                        </span>
+                                        <span>
+                                            Pelabelan
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <!-- your sidebar here -->
                 </ul>

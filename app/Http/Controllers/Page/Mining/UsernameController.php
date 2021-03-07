@@ -24,6 +24,7 @@ class UsernameController extends Controller{
     }
 
     function CheckUsername(Request $request){
+        // dd($request);
         $check  = DB::table('user')
             ->where('username', 'like', $request->username)
             ->count();

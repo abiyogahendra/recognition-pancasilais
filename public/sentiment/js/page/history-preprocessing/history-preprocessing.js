@@ -9,6 +9,8 @@ function DownloadFilePreprocessing(id){
         type : 'post',
         success : function(respon){
             if(respon.code == 500){
+                var pageURL = $(location).attr("href");
+                $.playSound(pageURL + 'sound/kawaii_.mp3') 
                 swal.fire({
                     position: 'top-end',
                     icon: 'warning',
@@ -48,6 +50,8 @@ function ProcessPreprocessing(id){
         success : function(response){
             if(response.code == 200){
                 $.LoadingOverlay("hide")
+                var pageURL = $(location).attr("href");
+                $.playSound(pageURL + 'sound/kawaii_.mp3') 
                 swal.fire({
                     position: 'top-end',
                     icon: 'success',

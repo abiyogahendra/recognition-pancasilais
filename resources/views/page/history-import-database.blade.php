@@ -5,11 +5,11 @@
                 <div class="card bg-white color-black" id="card-master">
                     <div class="card-header card-header-info">
                         <h4 class="card-title">History Import Database</h4>
-                        <p class="card-category">Berikut adalah data yang sudah ter import ke dalam database</p>
+                        <p class="card-category">Berikut adalah data History Pemrosesan data untuk dipindah ke dalam database</p>
                     </div>
                     <div class="card-body ">
                         <div class="table">
-                            <table class="table table-bordered fblack " id="table-history-import-database">
+                            <table class="table table-bordered fblack table-hover" id="table-history-import-database">
                                     <thead>
                                         <tr class="center">
                                             <th>ID Username</th>

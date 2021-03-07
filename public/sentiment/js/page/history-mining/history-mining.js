@@ -35,9 +35,44 @@ function Deleted_UserTweet(id){
 }
 
 function ProsesToExportDataTwitter(id){
-    // console.log(id);
-    window.location.href = "/process-export-data-mining/"+ id;
-    
+  $.LoadingOverlay("show", {
+    image       : "",
+    fontawesome : "fa fa-cog fa-spin",
+  });
+    $.ajax({
+        url : '/process-export-data-mining',
+        data : {
+            _token : dataToken,
+            id_user : id,
+        },
+        dataType : 'json',
+        type : 'post',
+        success : function(respon){
+            if(respon.code == 200){
+                $.LoadingOverlay("hide")
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Export Berhasil',
+                    html : respon.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                }) 
+                    $('.data-content').remove();
+                    HistoryMining();
+            }else{
+                $.LoadingOverlay("hide")
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Export Terjadi Kesalahan',
+                    html : "Harap Menghubungi Pengembang",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        }
+    })
 }
 
 
@@ -55,7 +90,7 @@ function HistoryMining(){
         success : function(respon){
             $('.data_masuk').append(respon);
             $('.nav-active').removeClass("active");
-            $('.nav-mining').addClass("active");
+            $('.nav-preprocessing').addClass("active");
 
             $('#table-history-mining').DataTable({
                 ajax : {
@@ -97,7 +132,7 @@ function HistoryMining(){
                     {"targets": 5,
                       "data": 0,
                       "render": function ( data, type, row, meta ) {
-                        return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DetailProgressRitzuka('+data+')"><i class="fa fa-eye"></i></a> | <a href="javascript:void(0)" style="color:black" onclick="Deleted_UserTweet('+data+')"><i class="fas fa-trash-alt"></i> | <a href="javascript:void(0)" style="color:black" onclick="ProsesToExportDataTwitter('+data+')"><span class="material-icons">download_for_offline</span></a></div></div>';
+                        return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"> <a href="javascript:void(0)" style="color:black" onclick="DetailProgressRitzuka('+data+')"><i class="fa fa-eye"></i></a> | <a href="javascript:void(0)" style="color:black" onclick="Deleted_UserTweet('+data+')"><i class="fas fa-trash-alt"></i> | <a href="javascript:void(0)" style="color:black" onclick="ProsesToExportDataTwitter('+data+')"><i class="fas fa-file-export"></i></a></div></div>';
                       }
                     },
                     

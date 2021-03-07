@@ -24,6 +24,12 @@ use App\Http\Controllers\Page\ImportDB\HistoryImportToDatabaseController;
 use App\Http\Controllers\Page\ImportDB\ImportToDatabaseController;
 use App\Http\Controllers\Page\ImportDB\PrepareDataToReadyProcessController;
 
+// Connect to controller InputKamuController
+use App\Http\Controllers\Page\Kamus\InputKamusController;
+
+// connect to controller PelabelanController
+use App\Http\Controllers\Page\Pelabelan\PelabelanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +68,7 @@ Route::group(['middleware' => ['auth']], function(){
         // export Data Tweet Yang Sudah Diambil
         Route::get('/index-export-data-mining',[ExportTweetMiningController::class, 'IndexExportMining'] );
         Route::get('/data-export-mining',[ExportTweetMiningController::class, 'DataExportMining'] );
-        Route::get('/process-export-data-mining/{id}',[ExportTweetMiningController::class, 'ExportDataTweet'] );
+        Route::post('/process-export-data-mining',[ExportTweetMiningController::class, 'ExportDataTweet'] );
 
 
 
@@ -85,6 +91,23 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/index-data-to-ready-process',[PrepareDataToReadyProcessController::class, 'IndexDataReady'] );
     Route::get('/data-to-ready-process',[PrepareDataToReadyProcessController::class, 'ListDataToReadyProcess'] );
     Route::post('/process-data-to-ready-data',[PrepareDataToReadyProcessController::class, 'ProcessDataToReadyProcess'] );
+    Route::post('/check-data-import',[PrepareDataToReadyProcessController::class, 'CheckDataImport']);
+    Route::post('/check-data-ready',[PrepareDataToReadyProcessController::class, 'CheckDataReady']);
+    
+    
+    // input Kamus Pancasilais - Negative
+    Route::get('/input-data-kamus',[InputKamusController::class, 'IndexInputKamus'] );
+    Route::post('/process-input-kamus',[InputKamusController::class, 'ProcessInputKamus'] );
+    Route::post('/process-input-kamus-pancasilais',[InputKamusController::class, 'ProcessInputKamusPancasilais']);
+    Route::post('/process-input-kamus-negative',[InputKamusController::class, 'ProcessInputKamusNegative']);
+    
+    
+    // proses pelabelan dengan menggunakan kamus
+    Route::get('/index-history-pelabelan',[PelabelanController::class, 'IndexPelabelan'] );
+    Route::get('/data-history-pelabelan',[PelabelanController::class, 'DataPelabelan'] );
+    Route::post('/proses-pelabelan',[PelabelanController::class, 'ProsesPelabelanPancasilais'] );
+    Route::post('/proses-klasifikasi-label',[PelabelanController::class, 'ProcessKlasifikasiLabel']);
+
     
 });
 

@@ -4,12 +4,12 @@
             <div class="card">
                 <div class="card bg-white color-black" id="card-master">
                     <div class="card-header card-header-info">
-                        <h4 class="card-title">History Tweet Mining</h4>
-                        <p class="card-category">Berikut Ini Adalah History User Twitter Yang Sudah Didapat</p>
+                        <h4 class="card-title">History Preprocessing</h4>
+                        <p class="card-category">Berikut Ini Adalah History Preprocessing Data</p>
                     </div>
                     <div class="card-body ">
                         <div class="table">
-                            <table class="table table-bordered fblack " id="table-history-preprocessing">
+                            <table class="table table-bordered fblack table-hover" id="table-history-preprocessing">
                                     <thead>
                                         <tr class="center">
                                             <th>ID Username</th>

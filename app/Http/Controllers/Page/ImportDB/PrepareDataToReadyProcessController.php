@@ -19,11 +19,42 @@ class PrepareDataToReadyProcessController extends Controller{
         $this->middleware(['web']);
     }
 
-    function ProcessDataToReadyProcess(Request $request){
+    function CheckDataImport(Request $request){
+        // dd($request);
+        $check_data = DB::table('clean_tweet')
+            ->where('id_user', '=', $request->id_user)
+            ->count();
+        // dd($check_data);
+        if($check_data == 0){
+            return response()->json([
+                'code' => 200
+            ]);
+        }else{
+            return response()->json([
+                'code' => 500
+            ]);
+        }
+    }
 
-        $id = $request->id_username;
+    function CheckDataReady(Request $request){
+        $check_data = DB::table('clean_tweet')
+            ->where('id_user', '=', $request->id_username)
+            ->count();
+        // dd($request->id_username);
+        if($check_data == 0){
+            return response()->json([
+                'code' => 500
+            ]);
+        }else{
+            return response()->json([
+                'code' => 200
+            ]);
+        }
+    }
+
+    function ProcessDataToReadyProcess(Request $request){
         $check = DB::table('data_ready')
-            ->where('id_user', '=', $id)
+            ->where('id_user', '=', $request->id_username)
             ->count();
 
         if($check == 0){
@@ -45,7 +76,8 @@ class PrepareDataToReadyProcessController extends Controller{
             $update_user = DB::table('user')
                 ->where('id_user', '=', $request->id_username)
                 ->update([
-                    'clean_step' => 2
+                    'step'          => 3,
+                    'clean_step'    => 2
                 ]);
             // dd($data_db);
             $i = 0;
@@ -58,17 +90,18 @@ class PrepareDataToReadyProcessController extends Controller{
                     $delete = DB::table('clean_tweet')
                         ->where('id_clean', '=', $q->id_clean)
                         ->delete();
-                }
-                $tweet[$i] = explode("', '", $tweet[$i]);
-                $final = json_encode($tweet[$i]);
+                }else{
+                    $tweet[$i] = explode("', '", $tweet[$i]);
+                    $final = json_encode($tweet[$i]);
 
-                $insert_ready_data = DB::table('data_ready')
-                    ->insert([
-                        'id_user'       => $request->id_username,
-                        'ready_data' => json_encode($tweet[$i]),
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now(),
-                    ]);
+                    $insert_ready_data = DB::table('data_ready')
+                        ->insert([
+                            'id_user'       => $request->id_username,
+                            'ready_data' => json_encode($tweet[$i]),
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now(),
+                        ]);
+                }
                 $i++;
             }
             

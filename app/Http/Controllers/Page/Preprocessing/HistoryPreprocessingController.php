@@ -24,6 +24,7 @@ class HistoryPreprocessingController extends Controller{
     
     function DataHistoryPreprocessing(){
         $d = DB::table('preprocessing')
+            ->where('preprocessing.status', '=', 0)
             ->select([
                 'user.id_user',
                 'user.username',

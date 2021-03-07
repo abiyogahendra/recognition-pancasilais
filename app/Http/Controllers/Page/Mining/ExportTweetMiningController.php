@@ -12,6 +12,7 @@ use Validator;
 use Auth;
 use DB;
 use Carbon\Carbon;
+use Excel;
 
 class ExportTweetMiningController extends Controller{
     //
@@ -75,17 +76,47 @@ class ExportTweetMiningController extends Controller{
         return response($data);
     }
 
-    function ExportDataTweet(Request $request,$id){
-        // dd($request);
+    function ExportDataTweet(Request $request){
 
         $data = DB::table('user')
-            ->where('id_user', '=', $id)
+            ->where('id_user', '=',$request->id_user)
             ->select([
                 'username'
             ])
             ->get();
+        
+         Excel::store(new  TweetExport($request->id_user), $data[0]->username.'.csv', 'preprocessing');
 
-        return (new TweetExport($id))->download($data[0]->username . '.csv');
+         $update_step = DB::table('user')
+            ->where('id_user', '=', $request->id_user)
+            ->update([
+                'step' => 1,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        $upload_data = DB::table('preprocessing')
+            ->insert([
+                'id_user' => $request->id_user,
+                'status' => 0,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+        $check_data = DB::table('preprocessing')
+                ->where('id_user', '=', $request->id_user)
+                ->count();
+            
+        if(isset($check_data)){
+            return response()->json([
+                'code'      => 200,
+                'message'   => 'Data Berhasil Diexport'
+            ]);
+        }else{
+             return response()->json([
+                'code' => 300
+            ]);
+        }      
+        // return (new TweetExport($id))->store($data[0]->username.'.csv', 'preprocessing');
     }
     
 }

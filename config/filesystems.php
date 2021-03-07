@@ -41,6 +41,10 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'preprocessing' => [
+            'driver' => 'local',
+            'root' => public_path('/preprocessing'),
+        ],
 
         's3' => [
             'driver' => 's3',

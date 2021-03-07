@@ -36,6 +36,7 @@ class ImportToDatabaseController extends Controller{
             ])
             ->get();
         
+        $d = 0;
 
         $filename = $data_user[0]->username .".xlsx";
 
@@ -57,7 +58,8 @@ class ImportToDatabaseController extends Controller{
             $update_user_step = DB::table('user')
                 ->where('id_user', '=', $request->id_user)
                 ->update([
-                    'clean_step' => 1
+                    'step'          => 2,
+                    'clean_step'    => 1
                 ]);
 
             return response()->json([

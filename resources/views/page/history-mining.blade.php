@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body ">
                         <div class="table">
-                            <table class="table table-bordered fblack " id="table-history-mining">
+                            <table class="table table-bordered fblack table-hover" id="table-history-mining">
                                     <thead>
                                         <tr class="center">
                                             <th>ID Username</th>

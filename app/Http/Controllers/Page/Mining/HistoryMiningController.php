@@ -26,6 +26,7 @@ class HistoryMiningController extends Controller{
     function DataHistoryMining(){
         $data_d = DB::table('user')
             ->join('dt_tw', 'user.id_user', '=', 'dt_tw.id_user')
+            ->where('user.step', '=', 0)
             ->groupBy([
                 'user.username',
                 'user.id_user',
@@ -50,10 +51,12 @@ class HistoryMiningController extends Controller{
             if($s->step == 0){
                 $step[$h] = 'Mining Data';
             }elseif($s->step == 1){
-                $step[$h] = 'Preprocessing Data';
+                $step[$h] = 'Siap Proses';
             }elseif($s->step == 2){
-                $step[$h] = 'Convert To Database';
+                $step[$h] = 'Preprocessing Data';
             }elseif($s->step == 3){
+                $step[$h] = 'Convert To Database';
+            }elseif($s->step == 4){
                 $step[$h] = 'Recognition Data';
             }
             $h++;
