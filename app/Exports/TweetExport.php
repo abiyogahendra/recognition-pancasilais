@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Tweet;
+use App\Models\Pelabelan;
 use DB;
 use App\Http\Controllers\TwitterController;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -40,6 +41,7 @@ class TweetExport implements FromQuery, WithHeadings
     public function query()
     {
         return Tweet::query()->where('id_user', $this->id_user);
+        // return Pelabelan::query()->where('id_user', $this->id_user);
     }    
     
     public function headings(): array
@@ -49,6 +51,12 @@ class TweetExport implements FromQuery, WithHeadings
             'id_user',
             'tweet',
         ];
+        // return [
+        //     'id_user',
+        //     'j_pancasilais',
+        //     'j_negative',
+        //     'klasifikasi',
+        // ];
     }
 
 }

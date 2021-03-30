@@ -16,8 +16,8 @@
                                             <div class="col-md-8 col-10 my-5">
                                                 <div class="row justify-content-center px-3 mb-3"> <img id="logo-username" src="{{asset('storage/icon/1.png')}}"> </div>
                                                 <h3 class="mb-5 text-center heading-username">Mari Bangun Pancasila</h3>
-                                                <div class="form-group"> <label class="form-control-label text-muted">Username</label> <input type="text" name="username" placeholder="Masukkan ID Akun Twitter" class="form-control-username"> </div>
-                                                <div class="row justify-content-center my-3 px-3"> <button onclick="PostDataUsername()" class="button-username btn-block btn-color-username">Proses</button> </div>
+                                                <div class="form-group"> <label class="form-control-label text-muted">Username</label> <input type="text" name="final_username" placeholder="Masukkan ID Akun Twitter" class="form-control-username"> </div>
+                                                <div class="row justify-content-center my-3 px-3"> <button onclick="PostDataFinalUsername()" class="button-username btn-block btn-color-username">Proses</button> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -39,17 +39,16 @@
             <div class="card">
                 <div class="card bg-white color-black" id="card-master">
                     <div class="card-header card-header-info">
-                        <h4 class="card-title">History Pelabelan</h4>
-                        <p class="card-category">Berikut Ini Adalah History Proses Pelabelan</p>
+                        <h4 class="card-title">History Final Classification</h4>
+                        <p class="card-category">Berikut Ini Adalah History Proses Final Classification</p>
                     </div>
                     <div class="card-body ">
                         <div class="table">
-                            <table class="table table-bordered fblack table-hover" id="table-history-pelabelan">
+                            <table class="table table-bordered fblack table-hover" id="table-final-classification">
                                 <thead>
                                     <tr class="center">
                                         <th>ID Username</th>
                                         <th>Username</th>
-                                        <th>Jumlah Tweet</th>
                                         <th>Step</th>
                                         <th>Update Time</th>
                                         <th>Option</th>

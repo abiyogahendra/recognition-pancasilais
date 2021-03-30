@@ -112,6 +112,26 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item nav-active nav-final-classification">
+                        <a class="nav-link" data-toggle="collapse" href="#final-classification">
+                            <i class="material-icons">miscellaneous_services</i>
+                                <p>Final Classification</p>
+                        </a>
+                        <div class="collapse" id="final-classification">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" onclick="FinalClassificationIndex()" class="nav-link">
+                                        <span>
+                                            <i class="material-icons">add_circle_outline</i>
+                                        </span>
+                                        <span>
+                                            Classification
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <!-- your sidebar here -->
                 </ul>
             </div>

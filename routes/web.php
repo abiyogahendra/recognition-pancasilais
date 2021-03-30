@@ -30,6 +30,9 @@ use App\Http\Controllers\Page\Kamus\InputKamusController;
 // connect to controller PelabelanController
 use App\Http\Controllers\Page\Pelabelan\PelabelanController;
 
+// conncect to Controller FinalClassification
+use App\Http\Controllers\Page\Classification\FinalClassificationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +58,10 @@ Route::post('login_post',[LoginController::class, 'LoginProcess']);
 
 
 Route::group(['middleware' => ['auth']], function(){
+    // dahsboard
     Route::get('/',[DashboardController::class, 'IndexDashboard'] );
+    Route::get('/data-history-user',[DashboardController::class, 'DataUser'] );
+    Route::post('/delete-all-data-history-user',[DashboardController::class, 'DeleteAllDataUser'] );
 
     // username - input (tweet minings)
     Route::get('/index-history-mining',[HistoryMiningController::class, 'IndexHistoryMining'] );
@@ -107,6 +113,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/data-history-pelabelan',[PelabelanController::class, 'DataPelabelan'] );
     Route::post('/proses-pelabelan',[PelabelanController::class, 'ProsesPelabelanPancasilais'] );
     Route::post('/proses-klasifikasi-label',[PelabelanController::class, 'ProcessKlasifikasiLabel']);
+    
+    // proses Klasifikasi Final
+    Route::get('/index-dashboard-final-klasifikasi',[FinalClassificationController::class, 'IndexFinalClassification'] );
+    Route::get('/data-table-final-classification',[FinalClassificationController::class, 'DataFinalClassification'] );
+    Route::post('/post-data-final-username',[FinalClassificationController::class, 'GetDataFromDataTweet'] );
+    Route::post('/post-preprocessing-final-username',[FinalClassificationController::class, 'PreprocessingFinalClassification'] );
+    Route::post('/post-process-final-data',[FinalClassificationController::class, 'ProcessFinalDataClassification'] );
 
     
 });
@@ -120,4 +133,10 @@ Route::get('/data', function()
 Route::get('/get_data',[TwitterController::class, 'GetData']);
 
 Route::get('/clean_text_input',[CleanTextController::class, 'IndexCleanTextInput']);
+
+
+
+
+// cutom 
+Route::get('/custom-data',[FinalClassificationController::class, 'CustomData']);
 
