@@ -4,15 +4,32 @@
 
 				</div>
 			</div>
-    </div>
-    
-    
+	</div>
 
 
-@section('head-modal-content')
+@section('js-viewTransaction')
+    <script>
+		function IndexModal(ss){
+		if ($(".data_content").length){
+			$(".data_content").remove();
+		}
+		$.ajax({
+			url: '/persentase-account',
+			data : {
+				kode_ss         : ss,
+				_token 			: dataToken
+			},
+			type : 'POST',
+			dataType : 'html',
+			success: function(html){
+				$('#modal_transaction_method').modal('hide');
+				$(' #content_modal').append(html);
+				$('.master_modal').modal('show');
+			}
+		})
+	}
 
-@endsection()
-
-@section('js-modal-content')
-
+	
+	
+	</script>
 @endsection

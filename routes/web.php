@@ -33,6 +33,9 @@ use App\Http\Controllers\Page\Pelabelan\PelabelanController;
 // conncect to Controller FinalClassification
 use App\Http\Controllers\Page\Classification\FinalClassificationController;
 
+// connect to Modal Controller
+use App\Http\Controllers\Modal\PersentaseAccuntController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +61,12 @@ Route::post('login_post',[LoginController::class, 'LoginProcess']);
 
 
 Route::group(['middleware' => ['auth']], function(){
+    // modal
+    Route::post('/persentase-account',[PersentaseAccuntController::class, 'ModalAccuntPersentase'] );
+
+
+
+
     // dahsboard
     Route::get('/',[DashboardController::class, 'IndexDashboard'] );
     Route::get('/data-history-user',[DashboardController::class, 'DataUser'] );

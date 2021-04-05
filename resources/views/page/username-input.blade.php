@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="card-username card2-username">
                                         <div class="my-auto mx-md-5 px-md-5 right-username">
-                                            <h3 class="text-white">We are more than just a company</h3> <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+                                            <h3 class="text-white center">Peringatan</h3> <small class="text-white center">Masukkan data berupa nama akun yang akan dilakukan diklasifikasikan dengan format "@namaakun"</small>
                                         </div>
                                     </div>
                                 </div>

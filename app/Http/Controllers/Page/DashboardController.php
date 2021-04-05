@@ -136,28 +136,27 @@ class DashboardController extends Controller{
         }
         // dd($false_netral);
         $tp_tn_tn = $true_pancasilais + $true_negative + $true_netral;
-        dd($tp_tn_tn);
         // $tp_tn_tn = $true_pancasilais + $true_negative ;
         $tp_fp_tn_fn = $true_pancasilais + $false_pancasilais + $true_negative + $false_negative + $true_netral + $false_netral ;
         // $tp_fp_tn_fn = $true_pancasilais + $false_pancasilais + $true_negative + $false_negative;
         $akurasi =  $tp_tn_tn / $tp_fp_tn_fn;
         
-
+        
         // mencari presisi
             $jumlah_data_pancasilais = $true_pancasilais + $false_pancasilais;
             $presisi_pancasilais = $true_pancasilais / $jumlah_data_pancasilais;
-
+            
             $jumlah_data_negative = $true_negative + $false_negative;
             $presisi_negative = $true_negative / $jumlah_data_negative;
-
+            
             $jumlah_data_netral = $true_netral + $false_netral;
             $presisi_netral = $true_netral / $jumlah_data_netral;
-
+            
             $jumlah_class = 3;
             $jumlah_semua_presisi_class = $presisi_pancasilais + $presisi_netral + $presisi_negative;
             // $jumlah_semua_presisi_class = $presisi_pancasilais + $presisi_negative;
             $presisi = $jumlah_semua_presisi_class / $jumlah_class;
-        
+            
         // mencari recall
             $jumlah_data_recall_pancasilais = $true_pancasilais + $false_recall_pancasilais;
             $recall_pancasilais = $true_pancasilais / $jumlah_data_recall_pancasilais;
@@ -167,12 +166,13 @@ class DashboardController extends Controller{
             
             $jumlah_data_recall_netral = $true_netral + $false_recall_netral;
             $recall_netral = $true_netral / $jumlah_data_recall_netral;
-
-
-        $jumlah_class_recall = $recall_pancasilais + $recall_negative + $recall_netral;
-        // $jumlah_class_recall = $recall_pancasilais + $recall_negative;
-        $jumlah_recall = 3;
-        $recall = $jumlah_class_recall / $jumlah_recall;        
+            
+            
+            $jumlah_class_recall = $recall_pancasilais + $recall_negative + $recall_netral;
+            // $jumlah_class_recall = $recall_pancasilais + $recall_negative;
+            $jumlah_recall = 3;
+            $recall = $jumlah_class_recall / $jumlah_recall;        
+            // dd($recall);
 
         return view('page.dashboard', compact(
             'persentasi_pancasilais_training',

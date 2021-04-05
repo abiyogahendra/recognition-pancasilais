@@ -83,10 +83,10 @@ function PostPreprocessingFinalClassification(id){
 }
 
 function ProsesFinalClassification(id){
-    // $.LoadingOverlay("show", {
-    //     image       : "",
-    //     fontawesome : "fa fa-cog fa-spin",
-    // });
+    $.LoadingOverlay("show", {
+        image       : "",
+        fontawesome : "fa fa-cog fa-spin",
+    });
     $.ajax({
         url : '/post-process-final-data',
         data : {

@@ -206,7 +206,7 @@ $( document ).ready(function() {
             {"targets": 6,
               "data": 0,
               "render": function ( data, type, row, meta ) {
-                return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"><a href="javascript:void(0)" style="color:black" onclick="DeleteAllDataUser('+data+')"><i class="fas fa-trash-alt"></i> </div></div>';
+                return ' <div class="row justify-content-center"> <div class="col" style="text-align:center"><a href="javascript:void(0)" style="color:black" onclick="DeleteAllDataUser('+data+')"><i class="fas fa-trash-alt"></i></a> | <a href="javascript:void(0)" style="color:black" onclick="IndexModal('+data+')"><i class="fa fa-eye"></i></a></div> </div>';
               }
             },
             

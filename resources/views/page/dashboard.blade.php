@@ -15,6 +15,8 @@
                     </figure>
                 </div>
             </div>
+            
+
             <div class="hidden-data">
                 <input type="hidden" class="hidden" name="data_train_pancasilais" value="{{$persentasi_pancasilais_training}}">        
                 <input type="hidden" class="hidden" name="data_train_netral" value="{{$persentasi_netral_training}}">        
@@ -45,8 +47,6 @@
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons text-warning">warning</i>
-                                <a href="void:javascript(0)" class="warning">Danai Ritzuka lain?</a>   
                             </div>
                         </div>
                     </div>
@@ -65,8 +65,6 @@
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">data_range</i>
-                                <a href="void:javascript(0)">Danai Ritzuka lain?</a>   
                             </div>
                         </div>
                     </div>
@@ -85,8 +83,6 @@
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons text-warning">warning</i>
-                                <a href="void:javascript(0)" class="warning">Danai Ritzuka lain?</a>   
                             </div>
                         </div>
                     </div>
@@ -187,7 +183,7 @@
 
 <script src="{{asset('sentiment/js/dashboard/chart/dashboard-chart.js')}}"></script>
 
-
+@yield('js-viewTransaction')
 
 
 @endsection()
